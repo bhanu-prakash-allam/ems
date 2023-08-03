@@ -23,32 +23,28 @@ public class EmployeeController {
     @GetMapping(path="/getEmployees")
     public ResponseEntity<List<Employee>> getAllEmployees()
     {
-        return new ResponseEntity<List<Employee>>(this.employeeService.getAllEmployees(), HttpStatus.OK);
+        return new ResponseEntity<>(this.employeeService.getAllEmployees(), HttpStatus.OK);
     }
     @GetMapping(path = "/getEmployee/{name}")
     public ResponseEntity<Employee> getEmployee(@PathVariable String name)
     {
-        return new ResponseEntity<Employee>(this.employeeService.getEmployee(name), HttpStatus.OK);
+        return new ResponseEntity<>(this.employeeService.getEmployee(name), HttpStatus.OK);
     }
     @PostMapping(path="/saveEmployee")
     public ResponseEntity<Employee> saveEmployee(@Valid @RequestBody Employee employee)
+
     {
-        return new ResponseEntity<Employee>(this.employeeService.saveEmployee(employee), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.employeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
     @PutMapping(path = "/updateEmployee")
     public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee)
     {
-        return new ResponseEntity<Employee>(this.employeeService.saveEmployee(employee), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.employeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
     @DeleteMapping(path = "/deleteEmployee/{name}")
     public ResponseEntity<Integer> deleteEmployee(@PathVariable String name)
     {
-        return new ResponseEntity<Integer>(this.employeeService.deleteEmployee(name), HttpStatus.NO_CONTENT);
-    }
-    @PatchMapping(path = "/editEmployee")
-    public ResponseEntity<Employee> editEmployee(@RequestBody Map<String,Object> fields)
-    {
-        return new ResponseEntity<Employee>(this.employeeService.patchEmployee(fields), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.employeeService.deleteEmployee(name), HttpStatus.NO_CONTENT);
     }
     @PatchMapping(path = "/publish")
     public String sendMessagetoKafka(@RequestBody String message) throws JsonProcessingException {
