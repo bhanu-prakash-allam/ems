@@ -63,7 +63,7 @@ public class EmployeeService {
                 String day = LocalDate.parse(timesheet.getKey(), formatter).getDayOfWeek().toString();
                 int hours=Integer.parseInt(timesheet.getValue());
                 if ((day.equals("SUNDAY") && hours != 0) || (!day.equals("SUNDAY") && hours >= 9)) {
-                    timeResponse.put(entry.getKey(), "Reject()");
+                    timeResponse.put(entry.getKey(), "Reject(Invalid hours)");
                     break;
                 } else {
                     timeResponse.put(entry.getKey(), "Processed");
